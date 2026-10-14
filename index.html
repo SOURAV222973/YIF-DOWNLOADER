@@ -1,226 +1,332 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>All-in-One TIF VIDEOS DOWNLOADER </title>
+<title>All-in-One Video Downloader</title>
 <style>
 :root {
-  --bg: #f4f6ff;
+  --bg: #0a0a0c;
+  --card: #141418;
+  --text: #f0f0f5;
+  --muted: #8e8e9a;
+  --accent: #e50914;
+  --accent-hover: #b80710;
+  --border: #272730;
+  --tab-bg: #1c1c24;
+}
+
+body.light {
+  --bg: #f5f5f7;
   --card: #ffffff;
-  --text: #18213c;
-  --muted: #65718c;
-  --accent: #635bff;
-  --border: #e2e6f0;
+  --text: #111115;
+  --muted: #6b6b7b;
+  --accent: #d30813;
+  --accent-hover: #a8060f;
+  --border: #e2e2ea;
+  --tab-bg: #ececf2;
 }
-body.dark {
-  --bg: #111525;
-  --card: #20263b;
-  --text: #f7f8ff;
-  --muted: #b0b8d1;
-  --border: #3c4560;
-}
+
 * { box-sizing: border-box; }
+
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Arial, sans-serif;
   background: var(--bg);
   color: var(--text);
+  transition: background 0.25s ease, color 0.25s ease;
 }
+
 header {
-  background: linear-gradient(120deg,#3844d5,#a04bdf);
+  background: linear-gradient(135deg, #0d0d11 0%, #300508 50%, #e50914 100%);
   color: white;
-  padding: 24px;
+  padding: 30px 20px;
   text-align: center;
+  position: relative;
+  box-shadow: 0 4px 25px rgba(229, 9, 20, 0.25);
 }
-header h1 { margin: 0 0 8px; }
-header p { margin: 0; opacity: .9; }
+
+.brand-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 8px;
+}
+
+.logo-icon {
+  width: 44px;
+  height: 44px;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.9rem;
+  letter-spacing: 0.5px;
+}
+
+header p {
+  margin: 6px 0 0;
+  opacity: 0.85;
+  font-size: 0.95rem;
+}
+
 .container {
   max-width: 820px;
   margin: 35px auto;
   padding: 0 16px;
 }
+
 .card {
   background: var(--card);
   padding: 28px;
-  border-radius: 18px;
-  box-shadow: 0 8px 30px #00000012;
-  margin-bottom: 22px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  margin-bottom: 24px;
 }
+
 .tabs {
   display: flex;
   gap: 10px;
   margin-bottom: 24px;
   flex-wrap: wrap;
 }
+
 .tab {
   flex: 1;
-  min-width: 110px;
-  padding: 13px;
+  min-width: 120px;
+  padding: 12px;
   border: 1px solid var(--border);
-  border-radius: 10px;
-  background: var(--bg);
+  border-radius: 8px;
+  background: var(--tab-bg);
   color: var(--text);
-  font-weight: bold;
+  font-weight: 600;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
+
+.tab:hover {
+  border-color: var(--accent);
+}
+
 .tab.active {
   background: var(--accent);
-  color: white;
+  color: #fff;
+  border-color: var(--accent);
+  box-shadow: 0 2px 12px rgba(229, 9, 20, 0.4);
 }
+
 label {
   display: block;
   margin-bottom: 10px;
-  font-weight: bold;
+  font-weight: 600;
+  font-size: 0.95rem;
 }
+
 input {
   width: 100%;
-  padding: 15px;
+  padding: 14px;
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 8px;
   font-size: 15px;
   background: var(--bg);
   color: var(--text);
+  outline: none;
+  transition: border-color 0.2s ease;
 }
+
+input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.2);
+}
+
 .actions {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 15px;
 }
+
 button.action {
   background: var(--accent);
   border: 0;
-  border-radius: 10px;
+  border-radius: 8px;
   color: white;
-  padding: 13px 19px;
+  padding: 12px 20px;
   font-weight: bold;
   cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
 }
-button.secondary { background: #66718a; }
-button:hover { opacity: .88; }
+
+button.action:hover {
+  background: var(--accent-hover);
+}
+
+button.action:active {
+  transform: scale(0.98);
+}
+
+button.secondary {
+  background: #2a2a35;
+  color: #e0e0ea;
+}
+
+button.secondary:hover {
+  background: #383846;
+}
+
 .status {
   margin-top: 18px;
-  padding: 12px;
-  border-radius: 9px;
+  padding: 14px;
+  border-radius: 8px;
   background: var(--bg);
+  border-left: 4px solid var(--accent);
   color: var(--muted);
   overflow-wrap: anywhere;
 }
+
 .preview {
   display: none;
-  margin-top: 20px;
+  margin-top: 22px;
 }
+
 .preview video {
   width: 100%;
-  border-radius: 12px;
+  border-radius: 10px;
   background: #000;
+  border: 1px solid var(--border);
 }
+
 small { color: var(--muted); }
-.steps { line-height: 1.9; }
+
+.steps {
+  line-height: 2;
+  padding-left: 20px;
+}
+
 footer {
-  text-align: left;
+  text-align: center;
   padding: 24px;
   color: var(--muted);
+  font-size: 0.9rem;
 }
+
 .toggle {
-  float: right;
-  background: #ffffff30;
-  border: 1px solid #ffffff80;
-  border-radius: 10px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
   color: white;
-  padding: 10px;
+  padding: 8px 14px;
+  font-weight: 600;
   cursor: pointer;
+  transition: background 0.2s;
+}
+
+.toggle:hover {
+  background: rgba(0, 0, 0, 0.7);
 }
 </style>
 </head>
 <body>
 
 <header>
-  <button class="toggle" onclick="toggleTheme()">☾ Theme</button>
-  <h1>🎬 TIF Video Downloader</h1>
-  <p>YouTube • Facebook • Instagram • Direct Video Files</p>
+  <button class="toggle" onclick="toggleTheme()">🌓 Mode</button>
+  <div class="brand-wrapper">
+    <!-- Red & Black Vector Logo -->
+    <svg class="logo-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="64" height="64" rx="14" fill="#000000" />
+      <circle cx="32" cy="32" r="26" stroke="#E50914" stroke-width="3" />
+      <polygon points="26,20 44,32 26,44" fill="#E50914" />
+      <path d="M42 43 L42 49 L22 49 L22 43" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" />
+      <path d="M32 37 L32 46 M28 43 L32 47 L36 43" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+    <h1>Apex Video Grabber</h1>
+  </div>
+  <p>❖ YouTube • ⚑ Facebook • ⌾ Instagram • ⤓ Direct Media</p>
 </header>
 
 <main class="container">
   <section class="card">
-    <h2>Download Your Videos</h2>
-    <p>Save videos you own or have permission to download.</p>
+    <h2>⚡ Fetch Video Stream</h2>
+    <p>Save authorized media or direct stream files to your device storage.</p>
 
     <div class="tabs">
-      <button class="tab active" onclick="selectTab('youtube',this)">
+      <button class="tab active" onclick="selectTab('youtube', this)">
         ▶ YouTube
       </button>
-      <button class="tab" onclick="selectTab('facebook',this)">
-        f Facebook
+      <button class="tab" onclick="selectTab('facebook', this)">
+        ⚑ Facebook
       </button>
-      <button class="tab" onclick="selectTab('instagram',this)">
-        ◎ Instagram
+      <button class="tab" onclick="selectTab('instagram', this)">
+        ⌾ Instagram
       </button>
-      <button class="tab" onclick="selectTab('direct',this)">
-        ↓ Direct MP4
+      <button class="tab" onclick="selectTab('direct', this)">
+        ⤓ Direct MP4
       </button>
     </div>
 
-    <label for="videoUrl">Paste Video URL</label>
-    <input id="videoUrl" type="url"
-      placeholder="https://example.com/video.mp4">
+    <label for="videoUrl">Paste Stream or Video URL</label>
+    <input id="videoUrl" type="url" placeholder="https://example.com/video.mp4">
 
     <div class="actions">
       <button class="action secondary" onclick="pasteLink()">
         📋 Paste Link
       </button>
       <button class="action" onclick="checkVideo()">
-        🔎 Check Video
+        🔍 Inspect URL
       </button>
       <button class="action secondary" onclick="clearInput()">
-        Clear
+        ✖ Reset
       </button>
     </div>
 
     <div class="status" id="status">
-      Enter a video link to get started.
+      Ready. Enter a video link to begin.
     </div>
 
     <div class="preview" id="preview">
-      <h3>Video Preview</h3>
+      <h3>Stream Preview</h3>
       <video id="player" controls preload="metadata"></video>
       <div class="actions">
         <button class="action" onclick="downloadVideo()">
-          ⬇ Download Video
+          ⬇ Download Media
         </button>
       </div>
       <p><small>
-        Downloads depend on the hosting server allowing browser access.
+        Downloads depend on host CORS permissions and origin file policy.
       </small></p>
     </div>
   </section>
 
   <section class="card">
-    <h2>How to Use</h2>
+    <h2>📌 Fast Instructions</h2>
     <ol class="steps">
-      <li>Copy the URL of your video.</li>
-      <li>Paste the URL into the input field.</li>
-      <li>Click Check Video.</li>
-      <li>For a direct video file, preview and download it.</li>
-      <li>For social media links, follow the platform's official options.</li>
+      <li>🗎 Copy the direct media link from your source.</li>
+      <li>📋 Paste the web address into the field above.</li>
+      <li>🔍 Click <b>Inspect URL</b> to validate media headers.</li>
+      <li>▶ For direct links, preview in the custom player and hit download.</li>
+      <li>🔒 For protected social feeds, utilize native client offline modes.</li>
     </ol>
   </section>
 
   <section class="card">
-    <h2>Download History</h2>
-    <div id="history"><small>No downloads yet.</small></div>
+    <h2>🗂 Recent Downloads</h2>
+    <div id="history"><small>No downloads logged yet.</small></div>
     <div class="actions">
       <button class="action secondary" onclick="clearHistory()">
-        Clear History
+        🗑 Clear Logs
       </button>
     </div>
   </section>
 </main>
 
 <footer>
-  © 2026 Video Downloader | For authorized content only
+  © 2026 Apex Video Grabber • Red & Black Edition • Authorized Content Only
 </footer>
 
 <script>
@@ -238,26 +344,17 @@ function setStatus(message) {
 
 function selectTab(platform, button) {
   selectedPlatform = platform;
-  document.querySelectorAll(".tab").forEach(tab => {
-    tab.classList.remove("active");
-  });
+  document.querySelectorAll(".tab").forEach(tab => tab.classList.remove("active"));
   button.classList.add("active");
-  setStatus("Selected: " + platform);
+  setStatus("Selected platform: " + platform.toUpperCase());
 }
 
 function detectPlatform(hostname) {
   const host = hostname.toLowerCase();
 
-  if (host === "youtube.com" ||
-      host.endsWith(".youtube.com") ||
-      host === "youtu.be") return "youtube";
-
-  if (host === "facebook.com" ||
-      host.endsWith(".facebook.com") ||
-      host === "fb.watch") return "facebook";
-
-  if (host === "instagram.com" ||
-      host.endsWith(".instagram.com")) return "instagram";
+  if (host === "youtube.com" || host.endsWith(".youtube.com") || host === "youtu.be") return "youtube";
+  if (host === "facebook.com" || host.endsWith(".facebook.com") || host === "fb.watch") return "facebook";
+  if (host === "instagram.com" || host.endsWith(".instagram.com")) return "instagram";
 
   return "direct";
 }
@@ -265,9 +362,9 @@ function detectPlatform(hostname) {
 async function pasteLink() {
   try {
     input.value = await navigator.clipboard.readText();
-    setStatus("Link pasted successfully.");
+    setStatus("URL pasted from clipboard.");
   } catch {
-    setStatus("Clipboard unavailable. Paste manually with Ctrl+V.");
+    setStatus("Clipboard denied. Please paste manually using Ctrl+V / Cmd+V.");
   }
 }
 
@@ -277,7 +374,7 @@ function clearInput() {
   preview.style.display = "none";
   player.removeAttribute("src");
   player.load();
-  setStatus("Enter a video link to get started.");
+  setStatus("Ready. Enter a video link to begin.");
 }
 
 function checkVideo() {
@@ -287,11 +384,9 @@ function checkVideo() {
   let url;
   try {
     url = new URL(input.value.trim());
-    if (!["http:", "https:"].includes(url.protocol)) {
-      throw new Error("Invalid protocol");
-    }
+    if (!["http:", "https:"].includes(url.protocol)) throw new Error("Invalid protocol");
   } catch {
-    setStatus("Please enter a valid HTTP or HTTPS video URL.");
+    setStatus("⚠️ Please supply a valid HTTP or HTTPS address.");
     return;
   }
 
@@ -299,18 +394,16 @@ function checkVideo() {
 
   if (platform !== "direct") {
     setStatus(
-      platform.toUpperCase() +
-      " link detected. Direct social media downloads " +
-      "are not supported in this HTML-only version. " +
-      "Use the platform's official download or save options."
+      "✦ " + platform.toUpperCase() +
+      " endpoint identified. Platform API restrictions prevent direct browser grabbing. " +
+      "Please use the official application's offline feature."
     );
     return;
   }
 
   if (!/\.(mp4|webm|ogg)$/i.test(url.pathname)) {
     setStatus(
-      "This does not look like a direct MP4, WebM or OGG file. " +
-      "A server integration may be required."
+      "⚠️ Address does not point to a direct raw video (.mp4, .webm, or .ogg)."
     );
     return;
   }
@@ -318,30 +411,23 @@ function checkVideo() {
   directVideoUrl = url.href;
   player.src = directVideoUrl;
   preview.style.display = "block";
-  setStatus(
-    "Direct video URL detected. Preview it or try downloading."
-  );
+  setStatus("✔ Direct video feed accessible. Preview or initiate file grab.");
 }
 
 async function downloadVideo() {
   if (!directVideoUrl) {
-    setStatus("Please check a direct video URL first.");
+    setStatus("⚠️ Inspect a valid direct video first.");
     return;
   }
 
-  const filename =
-    decodeURIComponent(
-      new URL(directVideoUrl).pathname.split("/").pop()
-    ) || "video.mp4";
+  const filename = decodeURIComponent(new URL(directVideoUrl).pathname.split("/").pop()) || "video.mp4";
 
   try {
     const response = await fetch(directVideoUrl);
     if (!response.ok) throw new Error("HTTP " + response.status);
 
     const blob = await response.blob();
-    if (!blob.type.startsWith("video/")) {
-      throw new Error("The server did not return a video file.");
-    }
+    if (!blob.type.startsWith("video/")) throw new Error("Returned resource is not a video stream.");
 
     const blobUrl = URL.createObjectURL(blob);
     const link = document.createElement("a");
@@ -353,21 +439,15 @@ async function downloadVideo() {
 
     setTimeout(() => URL.revokeObjectURL(blobUrl), 60000);
     saveHistory(filename);
-    setStatus("Download requested: " + filename);
+    setStatus("✔ Download dispatched: " + filename);
   } catch (error) {
-    setStatus(
-      "Download failed. The video server may block cross-origin " +
-      "requests, require authentication, or disallow downloads. " +
-      "Try the original website's authorized download option."
-    );
+    setStatus("⚠️ Download blocked: Server CORS restrictions or access limitation applied.");
   }
 }
 
 function getHistory() {
   try {
-    return JSON.parse(
-      localStorage.getItem("videoDownloadHistory") || "[]"
-    );
+    return JSON.parse(localStorage.getItem("videoDownloadHistory") || "[]");
   } catch {
     return [];
   }
@@ -377,12 +457,9 @@ function saveHistory(filename) {
   const history = getHistory();
   history.unshift({
     filename,
-    date: new Date().toLocaleString()
+    date: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
   });
-  localStorage.setItem(
-    "videoDownloadHistory",
-    JSON.stringify(history.slice(0, 20))
-  );
+  localStorage.setItem("videoDownloadHistory", JSON.stringify(history.slice(0, 20)));
   renderHistory();
 }
 
@@ -393,14 +470,14 @@ function renderHistory() {
 
   if (!history.length) {
     const small = document.createElement("small");
-    small.textContent = "No downloads yet.";
+    small.textContent = "No downloads logged yet.";
     container.appendChild(small);
     return;
   }
 
   history.forEach(item => {
     const p = document.createElement("p");
-    p.textContent = "📁 " + item.filename + " — " + item.date;
+    p.textContent = "🎞 " + item.filename + " — " + item.date;
     container.appendChild(p);
   });
 }
@@ -411,7 +488,7 @@ function clearHistory() {
 }
 
 function toggleTheme() {
-  document.body.classList.toggle("dark");
+  document.body.classList.toggle("light");
 }
 
 renderHistory();
